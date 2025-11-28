@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mom!</title>
+    <style>
+        body {
+            background-color: #fce4ec;
+            /* สีพื้นหลังชมพูอ่อน */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        h1 {
+            color: #d81b60;
+            margin-bottom: 50px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        
+        .cake-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            cursor: pointer;
+        }
+        /* ตัวเค้ก */
+        
+        .cake {
+            font-size: 100px;
+            z-index: 10;
+            transition: transform 0.3s;
+        }
+        
+        .cake:hover {
+            transform: scale(1.1);
+        }
+        /* ข้อความบอกให้กด */
+        
+        .click-me {
+            position: absolute;
+            bottom: -40px;
+            color: #880e4f;
+            font-size: 14px;
+            animation: bounce 1s infinite alternate;
+        }
+        /* รูปภาพที่จะเด้งออกมา */
+        
+        .photo {
+            position: absolute;
+            width: 100px;
+            height: 120px;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            bottom: 50px;
+            /* ซ่อนอยู่หลังเค้ก */
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 1;
+            /* อยู่หลังเค้ก */
+        }
+        /* ตำแหน่งรูปเมื่อเด้งออกมา */
+        
+        .active .photo:nth-child(1) {
+            transform: translate(-100px, -180px) rotate(-15deg);
+            opacity: 1;
+        }
+        
+        .active .photo:nth-child(2) {
+            transform: translate(0px, -220px) rotate(0deg);
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .active .photo:nth-child(3) {
+            transform: translate(100px, -180px) rotate(15deg);
+            opacity: 1;
+        }
+        
+        .active h1 {
+            opacity: 1;
+        }
+        
+        .active .click-me {
+            display: none;
+        }
+        
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>สุขสันต์วันเกิดนะแม่! ❤️</h1>
+
+    <div class="cake-container" onclick="openGift()">
+        <img src="mom1.jpg" class="photo" alt="Photo 1"> <img src="mom2.jpg" class="photo" alt="Photo 2"> <img src="mom3.jpg" class="photo" alt="Photo 3">
+        <div class="cake">🎂</div>
+        <div class="click-me">แตะที่เค้กสิแม่ 👇</div>
+    </div>
+
+    <script>
+        function openGift() {
+            document.querySelector('.cake-container').classList.add('active');
+            // เล่นเสียงเพลง (ถ้าต้องการใส่เพิ่ม)
+            // var audio = new Audio('hbd_song.mp3');
+            // audio.play();
+        }
+    </script>
+</body>
+
+</html>
